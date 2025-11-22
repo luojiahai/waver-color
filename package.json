@@ -1,0 +1,46 @@
+{
+  "name": "@luojiahai/waver",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.20.0",
+  "description": "todo",
+  "author": "luojiahai <luo@jiahai.co>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luojiahai/waver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luojiahai/waver/issues"
+  },
+  "keywords": [
+    "color"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "pnpm run build",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "eslint": "^9.36.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "unbuild": "^3.6.1",
+    "typescript-eslint": "^8.47.0"
+  },
+  "homepage": "https://github.com/luojiahai/waver#readme"
+}
