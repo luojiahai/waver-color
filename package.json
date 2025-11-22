@@ -1,7 +1,7 @@
 {
   "name": "waver-color",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "packageManager": "pnpm@10.20.0",
   "description": "todo",
   "author": "luojiahai <luo@jiahai.co>",

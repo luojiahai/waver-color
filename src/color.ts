@@ -209,11 +209,11 @@ class WaverColor {
     this.colorInstance = colors[color][level ?? 5];
   }
 
-  colors(): string[] {
+  public colors = (): string[] => {
     return colors[this.color].map((c) => c.hex());
-  }
+  };
 
-  saturated = (theme?: Theme): string => {
+  public saturated = (theme?: Theme): string => {
     const sOffset = theme === "dark" ? 32 : 16;
     const vOffset = theme === "dark" ? 16 : 32;
     const h = this.colorInstance.hue();
