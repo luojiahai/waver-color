@@ -198,45 +198,73 @@ const colors = {
   ],
 };
 
-class WaverColor {
-  private color: keyof typeof colors;
-  private colorInstance: ColorInstance;
+const DEFAULT_LEVEL = 5;
 
-  constructor(color: keyof typeof colors, level?: number) {
-    this.color = color;
-    this.colorInstance = colors[color][level ?? 5];
+class WaverColor {
+  private instances: ColorInstance[];
+  private instance: ColorInstance;
+
+  constructor(instances: ColorInstance[]) {
+    this.instances = instances;
+    this.instance = instances[DEFAULT_LEVEL];
   }
 
-  public hex = (): string => {
-    return this.colorInstance.hex();
+  public getAll = (): ColorInstance[] => {
+    return this.instances;
   };
 
-  public colors = (): string[] => {
-    return colors[this.color].map((c) => c.hex());
+  public get = (arg?: string): ColorInstance => {
+    const options = arg?.split("_") ?? [];
+    if (options.length === 0) {
+      return this.instance;
+    }
+    this.level(parseInt(options[0]));
+    for (const option of options) {
+      if (option[0] === "s") {
+        const offset = parseInt(option.slice(1));
+        console.log("saturation offset:", offset);
+        this.s(offset);
+      }
+      if (option[0] === "v") {
+        const offset = parseInt(option.slice(1));
+        console.log("value offset:", offset);
+        this.v(offset);
+      }
+    }
+    return this.instance;
   };
 
-  public saturated = (): string => {
-    const h = this.colorInstance.hue();
-    const s = this.colorInstance.saturationv() - 16;
-    const v = this.colorInstance.value() - 32;
-    return Color.hsv(h, s, v).hex();
+  private level = (level?: number): void => {
+    this.instance = this.instances[level ?? DEFAULT_LEVEL];
+  };
+
+  private s = (offset: number): void => {
+    const h = this.instance.hue();
+    const s = this.instance.saturationv() + offset;
+    const v = this.instance.value();
+    this.instance = Color.hsv(h, s, v);
+  };
+
+  private v = (offset: number): void => {
+    const h = this.instance.hue();
+    const s = this.instance.saturationv();
+    const v = this.instance.value() + offset;
+    this.instance = Color.hsv(h, s, v);
   };
 }
 
-export const gray = (level?: number) => new WaverColor("gray", level);
-export const pink = (level?: number) => new WaverColor("pink", level);
-export const magenta = (level?: number) => new WaverColor("magenta", level);
-export const red = (level?: number) => new WaverColor("red", level);
-export const orange = (level?: number) => new WaverColor("orange", level);
-export const yellow = (level?: number) => new WaverColor("yellow", level);
-export const lightyellow = (level?: number) =>
-  new WaverColor("lightyellow", level);
-export const lightgreen = (level?: number) =>
-  new WaverColor("lightgreen", level);
-export const green = (level?: number) => new WaverColor("green", level);
-export const cyan = (level?: number) => new WaverColor("cyan", level);
-export const lightblue = (level?: number) => new WaverColor("lightblue", level);
-export const blue = (level?: number) => new WaverColor("blue", level);
-export const purple = (level?: number) => new WaverColor("purple", level);
-export const brown = (level?: number) => new WaverColor("brown", level);
-export const silver = (level?: number) => new WaverColor("silver", level);
+export const gray = new WaverColor(colors.gray);
+export const pink = new WaverColor(colors.pink);
+export const magenta = new WaverColor(colors.magenta);
+export const red = new WaverColor(colors.red);
+export const orange = new WaverColor(colors.orange);
+export const yellow = new WaverColor(colors.yellow);
+export const lightyellow = new WaverColor(colors.lightyellow);
+export const lightgreen = new WaverColor(colors.lightgreen);
+export const green = new WaverColor(colors.green);
+export const cyan = new WaverColor(colors.cyan);
+export const lightblue = new WaverColor(colors.lightblue);
+export const blue = new WaverColor(colors.blue);
+export const purple = new WaverColor(colors.purple);
+export const brown = new WaverColor(colors.brown);
+export const silver = new WaverColor(colors.silver);
