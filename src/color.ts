@@ -220,15 +220,8 @@ class WaverColor {
     }
     this.level(parseInt(options[0]));
     for (const option of options) {
-      if (option[0] === "s") {
-        const offset = parseInt(option.slice(1));
-        console.log("saturation offset:", offset);
-        this.s(offset);
-      }
-      if (option[0] === "v") {
-        const offset = parseInt(option.slice(1));
-        console.log("value offset:", offset);
-        this.v(offset);
+      if (option === "s") {
+        this.saturate();
       }
     }
     return this.instance;
@@ -238,17 +231,10 @@ class WaverColor {
     this.instance = this.instances[level ?? DEFAULT_LEVEL];
   };
 
-  private s = (offset: number): void => {
-    const h = this.instance.hue();
-    const s = this.instance.saturationv() + offset;
-    const v = this.instance.value();
-    this.instance = Color.hsv(h, s, v);
-  };
-
-  private v = (offset: number): void => {
+  private saturate = (): void => {
     const h = this.instance.hue();
     const s = this.instance.saturationv();
-    const v = this.instance.value() + offset;
+    const v = this.instance.value() - 32;
     this.instance = Color.hsv(h, s, v);
   };
 }
