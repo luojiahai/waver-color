@@ -200,7 +200,7 @@ const colors = {
 
 type Theme = "dark" | "light";
 
-class _Color {
+class WaverColor {
   private color: keyof typeof colors;
   private colorInstance: ColorInstance;
 
@@ -223,18 +223,20 @@ class _Color {
   };
 }
 
-export const gray = (level?: number) => new _Color("gray", level);
-export const pink = (level?: number) => new _Color("pink", level);
-export const magenta = (level?: number) => new _Color("magenta", level);
-export const red = (level?: number) => new _Color("red", level);
-export const orange = (level?: number) => new _Color("orange", level);
-export const yellow = (level?: number) => new _Color("yellow", level);
-export const lightyellow = (level?: number) => new _Color("lightyellow", level);
-export const lightgreen = (level?: number) => new _Color("lightgreen", level);
-export const green = (level?: number) => new _Color("green", level);
-export const cyan = (level?: number) => new _Color("cyan", level);
-export const lightblue = (level?: number) => new _Color("lightblue", level);
-export const blue = (level?: number) => new _Color("blue", level);
-export const purple = (level?: number) => new _Color("purple", level);
-export const brown = (level?: number) => new _Color("brown", level);
-export const silver = (level?: number) => new _Color("silver", level);
+export const gray = (level?: number) => new WaverColor("gray", level);
+export const pink = (level?: number) => new WaverColor("pink", level);
+export const magenta = (level?: number) => new WaverColor("magenta", level);
+export const red = (level?: number) => new WaverColor("red", level);
+export const orange = (level?: number) => new WaverColor("orange", level);
+export const yellow = (level?: number) => new WaverColor("yellow", level);
+export const lightyellow = (level?: number) =>
+  new WaverColor("lightyellow", level);
+export const lightgreen = (level?: number) =>
+  new WaverColor("lightgreen", level);
+export const green = (level?: number) => new WaverColor("green", level);
+export const cyan = (level?: number) => new WaverColor("cyan", level);
+export const lightblue = (level?: number) => new WaverColor("lightblue", level);
+export const blue = (level?: number) => new WaverColor("blue", level);
+export const purple = (level?: number) => new WaverColor("purple", level);
+export const brown = (level?: number) => new WaverColor("brown", level);
+export const silver = (level?: number) => new WaverColor("silver", level);

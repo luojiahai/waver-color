@@ -1,7 +1,7 @@
 {
   "name": "@luojiahai/waver",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "pnpm@10.20.0",
   "description": "todo",
   "author": "luojiahai <luo@jiahai.co>",
@@ -32,7 +32,8 @@
     "lint": "eslint .",
     "prepublishOnly": "pnpm run build",
     "start": "tsx src/index.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "publish": "npm publish --access=public"
   },
   "devDependencies": {
     "@types/color": "^4.2.0",
