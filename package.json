@@ -8,10 +8,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luojiahai/waver.git"
+    "url": "git+https://github.com/luojiahai/waver-color.git"
   },
   "bugs": {
-    "url": "https://github.com/luojiahai/waver/issues"
+    "url": "https://github.com/luojiahai/waver-color/issues"
   },
   "keywords": [
     "color"
@@ -44,5 +44,5 @@
     "typescript-eslint": "^8.47.0",
     "unbuild": "^3.6.1"
   },
-  "homepage": "https://github.com/luojiahai/waver#readme"
+  "homepage": "https://github.com/luojiahai/waver-color#readme"
 }
