@@ -198,8 +198,6 @@ const colors = {
   ],
 };
 
-type Theme = "dark" | "light";
-
 class WaverColor {
   private color: keyof typeof colors;
   private colorInstance: ColorInstance;
@@ -209,16 +207,18 @@ class WaverColor {
     this.colorInstance = colors[color][level ?? 5];
   }
 
+  public hex = (): string => {
+    return this.colorInstance.hex();
+  };
+
   public colors = (): string[] => {
     return colors[this.color].map((c) => c.hex());
   };
 
-  public saturated = (theme?: Theme): string => {
-    const sOffset = theme === "dark" ? 32 : 16;
-    const vOffset = theme === "dark" ? 16 : 32;
+  public saturated = (): string => {
     const h = this.colorInstance.hue();
-    const s = this.colorInstance.saturationv() - sOffset;
-    const v = this.colorInstance.value() - vOffset;
+    const s = this.colorInstance.saturationv() - 16;
+    const v = this.colorInstance.value() - 32;
     return Color.hsv(h, s, v).hex();
   };
 }
