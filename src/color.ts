@@ -8,46 +8,21 @@ const colors = {
     new Color("#e3e5e7"),
     new Color("#c9ccd0"),
     new Color("#aeb3b9"),
-    new Color("#9499a0"),
+    new Color("#98999a"), // s100 l70
     new Color("#797f87"),
     new Color("#61666d"),
     new Color("#484c53"),
     new Color("#2f3238"),
     new Color("#18191c"),
   ],
-  pink: [
-    new Color("#fff3f6"),
-    new Color("#ffecf1"),
-    new Color("#ffd9e4"),
-    new Color("#ffb3ca"),
-    new Color("#ff8cb0"),
-    new Color("#ff6699"),
-    new Color("#e84b85"),
-    new Color("#d03171"),
-    new Color("#ad1c5b"),
-    new Color("#771141"),
-    new Color("#3f0723"),
-  ],
-  magenta: [
-    new Color("#fef3fc"),
-    new Color("#fdebfa"),
-    new Color("#fbd7f4"),
-    new Color("#f7aeeb"),
-    new Color("#f286e2"),
-    new Color("#ee5ddb"),
-    new Color("#da41cb"),
-    new Color("#c525ba"),
-    new Color("#9b1797"),
-    new Color("#670f67"),
-    new Color("#330834"),
-  ],
   red: [
+    // h0
     new Color("#fef3f2"),
     new Color("#feecea"),
     new Color("#fdd7d4"),
     new Color("#fcafaa"),
     new Color("#fa857f"),
-    new Color("#f85a54"),
+    new Color("#ff6666"), // s100 l70
     new Color("#e23d3d"),
     new Color("#c9272c"),
     new Color("#9f1922"),
@@ -55,12 +30,13 @@ const colors = {
     new Color("#3b060d"),
   ],
   orange: [
+    // h20
     new Color("#fff6ee"),
     new Color("#fff0e3"),
     new Color("#ffe1c7"),
     new Color("#ffc18f"),
     new Color("#ffa058"),
-    new Color("#ff7f24"),
+    new Color("#ff9966"), // s100 l70
     new Color("#e95b03"),
     new Color("#bb4100"),
     new Color("#8d2d00"),
@@ -68,12 +44,13 @@ const colors = {
     new Color("#2f0c00"),
   ],
   yellow: [
+    // h40
     new Color("#fffaef"),
     new Color("#fff6e4"),
     new Color("#ffeec9"),
     new Color("#ffdb93"),
     new Color("#ffc65d"),
-    new Color("#ffb027"),
+    new Color("#ffcc66"), // s100 l70
     new Color("#fa9600"),
     new Color("#c26e00"),
     new Color("#8a4a00"),
@@ -81,12 +58,13 @@ const colors = {
     new Color("#2f1600"),
   ],
   lightyellow: [
+    // h60
     new Color("#fffcec"),
     new Color("#fffadf"),
     new Color("#fff5bf"),
     new Color("#ffea80"),
     new Color("#ffdc40"),
-    new Color("#ffcc00"),
+    new Color("#ffff66"), // s100 l70
     new Color("#d5a300"),
     new Color("#aa7d00"),
     new Color("#805a00"),
@@ -94,12 +72,13 @@ const colors = {
     new Color("#2b1b00"),
   ],
   lightgreen: [
+    // h100
     new Color("#f7fbef"),
     new Color("#f2f9e4"),
     new Color("#e3f2c8"),
     new Color("#c7e691"),
     new Color("#a9d95b"),
-    new Color("#88cc24"),
+    new Color("#99ff66"), // s100 l70
     new Color("#66b105"),
     new Color("#4e8e04"),
     new Color("#376a03"),
@@ -107,12 +86,13 @@ const colors = {
     new Color("#102301"),
   ],
   green: [
+    // h140
     new Color("#effbf3"),
     new Color("#e4f8ea"),
     new Color("#caf1d6"),
     new Color("#95e4af"),
     new Color("#5fd689"),
-    new Color("#2ac864"),
+    new Color("#66ff99"), // s100 l70
     new Color("#0eb350"),
     new Color("#089043"),
     new Color("#046e35"),
@@ -120,12 +100,13 @@ const colors = {
     new Color("#012414"),
   ],
   cyan: [
+    // h180
     new Color("#edfbfb"),
     new Color("#e2f8f8"),
     new Color("#c4eff0"),
     new Color("#89e1e1"),
     new Color("#4fd3d1"),
-    new Color("#14c4bf"),
+    new Color("#66ffff"), // s100 l70
     new Color("#02aaaa"),
     new Color("#018488"),
     new Color("#015f66"),
@@ -133,12 +114,13 @@ const colors = {
     new Color("#001d22"),
   ],
   lightblue: [
+    // h200
     new Color("#ecfafe"),
     new Color("#dff6fd"),
     new Color("#bfedfa"),
     new Color("#80daf6"),
     new Color("#40c5f1"),
-    new Color("#00aeec"),
+    new Color("#66ccff"), // s100 l70
     new Color("#008ac5"),
     new Color("#00699d"),
     new Color("#004b76"),
@@ -146,12 +128,13 @@ const colors = {
     new Color("#001627"),
   ],
   blue: [
+    // h220
     new Color("#f3f5ff"),
     new Color("#ebefff"),
     new Color("#d7dfff"),
     new Color("#b0c1ff"),
     new Color("#88a4ff"),
-    new Color("#6188ff"),
+    new Color("#6699ff"), // s100 l70
     new Color("#4c6de4"),
     new Color("#3752c8"),
     new Color("#2136ac"),
@@ -159,43 +142,46 @@ const colors = {
     new Color("#080d41"),
   ],
   purple: [
-    new Color("#f9f4ff"),
-    new Color("#f6edff"),
-    new Color("#eddbff"),
-    new Color("#d8b6ff"),
-    new Color("#c392ff"),
-    new Color("#ac6dff"),
-    new Color("#8f56e4"),
-    new Color("#723ecc"),
-    new Color("#5627b3"),
-    new Color("#371683"),
-    new Color("#190a44"),
+    // h260
+    new Color("#eee5ff"), // s100 l95
+    new Color("#ddccff"), // s100 l90
+    new Color("#ccb3ff"), // s100 l85
+    new Color("#bb99ff"), // s100 l80
+    new Color("#aa80ff"), // s100 l75
+    new Color("#9966ff"), // s100 l70
+    new Color("#804ce6"), // s75 l60
+    new Color("#6633cc"), // s60 l50
+    new Color("#5024a8"), // s65 l40
+    new Color("#3b1782"), // s70 l30
+    new Color("#260d59"), // s75 l20
   ],
-  brown: [
-    new Color("#faf8f6"),
-    new Color("#f7f3f0"),
-    new Color("#efe7e0"),
-    new Color("#e0cfc1"),
-    new Color("#d0b7a3"),
-    new Color("#c19d84"),
-    new Color("#a5816a"),
-    new Color("#856553"),
-    new Color("#634a3e"),
-    new Color("#423029"),
-    new Color("#211815"),
+  magenta: [
+    // h300
+    new Color("#ffe5ff"), // s100 l95
+    new Color("#ffccff"), // s100 l90
+    new Color("#ffb3ff"), // s100 l85
+    new Color("#ff99ff"), // s100 l80
+    new Color("#ff80ff"), // s100 l75
+    new Color("#ff66ff"), // s100 l70
+    new Color("#e64ce6"), // s75 l60
+    new Color("#cc33cc"), // s60 l50
+    new Color("#a824a8"), // s65 l40
+    new Color("#821782"), // s70 l30
+    new Color("#590d59"), // s75 l20
   ],
-  silver: [
-    new Color("#f9fbfc"),
-    new Color("#f5f7fa"),
-    new Color("#ebeff4"),
-    new Color("#d7e0ea"),
-    new Color("#c3d0df"),
-    new Color("#afc0d5"),
-    new Color("#8d9fb9"),
-    new Color("#6d7f9c"),
-    new Color("#4d5d7c"),
-    new Color("#323d54"),
-    new Color("#191e2b"),
+  pink: [
+    // h340
+    new Color("#ffe5ee"), // s100 l95
+    new Color("#ffccdd"), // s100 l90
+    new Color("#ffb3cc"), // s100 l85
+    new Color("#ff99bb"), // s100 l80
+    new Color("#ff80aa"), // s100 l75
+    new Color("#ff6699"), // s100 l70
+    new Color("#e64c7f"), // s75 l60
+    new Color("#cc3366"), // s60 l50
+    new Color("#a82450"), // s65 l40
+    new Color("#82173b"), // s70 l30
+    new Color("#590d26"), // s75 l20
   ],
 };
 
@@ -280,8 +266,6 @@ class WaverColor {
 }
 
 export const gray = new WaverColor(colors.gray);
-export const pink = new WaverColor(colors.pink);
-export const magenta = new WaverColor(colors.magenta);
 export const red = new WaverColor(colors.red);
 export const orange = new WaverColor(colors.orange);
 export const yellow = new WaverColor(colors.yellow);
@@ -292,5 +276,5 @@ export const cyan = new WaverColor(colors.cyan);
 export const lightblue = new WaverColor(colors.lightblue);
 export const blue = new WaverColor(colors.blue);
 export const purple = new WaverColor(colors.purple);
-export const brown = new WaverColor(colors.brown);
-export const silver = new WaverColor(colors.silver);
+export const magenta = new WaverColor(colors.magenta);
+export const pink = new WaverColor(colors.pink);
