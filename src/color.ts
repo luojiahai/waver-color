@@ -1,4 +1,5 @@
 import Color, { ColorInstance } from "color";
+import { isInteger } from "./utils";
 
 const colors = {
   gray: [
@@ -198,7 +199,60 @@ const colors = {
   ],
 };
 
-const DEFAULT_LEVEL = 5;
+type ColorLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+type ColorFunction = (instance: ColorInstance) => ColorInstance;
+type ColorOptions = {
+  level: ColorLevel;
+  functions: ColorFunction[];
+};
+
+const saturate = (instance: ColorInstance): ColorInstance => {
+  return Color.hsv(
+    instance.hue(),
+    instance.saturationv(),
+    instance.value() - 32
+  );
+};
+
+const ARGUMENT_PATTERN = /^\d(\_\w)*$/;
+const DEFAULT_COLOR_LEVEL = 5;
+const COLOR_FUNCTIONS: { [key: string]: ColorFunction } = {
+  s: saturate,
+};
+
+const getOptions = (argument: string): ColorOptions => {
+  if (!ARGUMENT_PATTERN.test(argument)) {
+    throw new Error(`invalid argument: ${argument}`);
+  }
+  const options = argument.split("_");
+  return {
+    level: getLevel(options),
+    functions: getFunctions(options),
+  };
+};
+
+const getLevel = (options: string[]): ColorLevel => {
+  if (!isInteger(options[0])) {
+    throw new Error(
+      `the first option is color level, must be an integer: ${options[0]}`
+    );
+  }
+  const level = parseInt(options[0], 10);
+  if (level < 0 || level >= 11) {
+    throw new Error(`this color level is out of range: ${level}`);
+  }
+  return level as ColorLevel;
+};
+
+const getFunctions = (options: string[]): ColorFunction[] => {
+  const keys = options.slice(1);
+  return keys.map((key) => {
+    if (!Object.keys(COLOR_FUNCTIONS).includes(key)) {
+      throw new Error(`invalid color option: ${key}`);
+    }
+    return COLOR_FUNCTIONS[key];
+  });
+};
 
 class WaverColor {
   private instances: ColorInstance[];
@@ -206,36 +260,22 @@ class WaverColor {
 
   constructor(instances: ColorInstance[]) {
     this.instances = instances;
-    this.instance = instances[DEFAULT_LEVEL];
+    this.instance = instances[DEFAULT_COLOR_LEVEL];
   }
 
-  public getAll = (): ColorInstance[] => {
+  public colors = (): ColorInstance[] => {
     return this.instances;
   };
 
-  public get = (arg?: string): ColorInstance => {
-    const options = arg?.split("_") ?? [];
-    if (options.length === 0) {
-      return this.instance;
-    }
-    this.level(parseInt(options[0]));
-    for (const option of options) {
-      if (option === "s") {
-        this.saturate();
-      }
+  public get = (argument?: string): ColorInstance => {
+    if (argument) {
+      const { level, functions } = getOptions(argument);
+      this.instance = this.instances[level];
+      functions.forEach((fn) => {
+        this.instance = fn(this.instance);
+      });
     }
     return this.instance;
-  };
-
-  private level = (level?: number): void => {
-    this.instance = this.instances[level ?? DEFAULT_LEVEL];
-  };
-
-  private saturate = (): void => {
-    const h = this.instance.hue();
-    const s = this.instance.saturationv();
-    const v = this.instance.value() - 32;
-    this.instance = Color.hsv(h, s, v);
   };
 }
 
