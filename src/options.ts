@@ -5,8 +5,8 @@ import { ColorFunction, ColorLevel, ColorOptions } from "./types";
 
 const ARGUMENT_PATTERN = /^\d(\_\w)*$/;
 const COLOR_FUNCTIONS: { [key: string]: ColorFunction } = {
-  d: (instance: ColorInstance) => desaturate(instance, 0.2),
-  s: (instance: ColorInstance) => saturate(instance, 0.2),
+  d: (instance: ColorInstance) => desaturate(instance, 0.34),
+  s: (instance: ColorInstance) => saturate(instance, 0.34),
 };
 
 const level = (options: string[]): ColorLevel => {
@@ -36,7 +36,7 @@ export const options = (argument: string): ColorOptions => {
   if (!ARGUMENT_PATTERN.test(argument)) {
     throw new Error(`invalid argument: ${argument}`);
   }
-  const options = argument.split("_");
+  const options = argument.split("");
   return {
     level: level(options),
     functions: functions(options),
