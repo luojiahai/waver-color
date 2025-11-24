@@ -14,15 +14,15 @@ class Color {
   }
 
   public get = (argument?: string): ColorHex => {
-    let color = this.colors[this.DEFAULT_COLOR_LEVEL - 1];
+    let hex = this.colors[this.DEFAULT_COLOR_LEVEL - 1];
     if (argument) {
       const { level, functions } = options(argument);
-      color = this.colors[level - 1];
+      hex = this.colors[level - 1];
       functions.forEach((fn) => {
-        color = fn(color);
+        hex = fn(hex);
       });
     }
-    return color;
+    return hex;
   };
 }
 

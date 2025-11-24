@@ -9,16 +9,16 @@ import { ColorHex } from "./types";
  */
 const generate = (base: ColorHex): ColorHex[] =>
   [
-    (color: ColorHex) => Color(color).white(80).hex(),
-    (color: ColorHex) => Color(color).white(70).hex(),
-    (color: ColorHex) => Color(color).white(60).hex(),
-    (color: ColorHex) => Color(color).white(50).hex(),
-    (color: ColorHex) => Color(color).hex(),
-    (color: ColorHex) => Color(color).black(15).hex(),
-    (color: ColorHex) => Color(color).black(30).hex(),
-    (color: ColorHex) => Color(color).black(45).hex(),
-    (color: ColorHex) => Color(color).black(60).hex(),
-    (color: ColorHex) => Color(color).black(75).hex(),
+    (hex: ColorHex) => Color(hex).white(80).hex(),
+    (hex: ColorHex) => Color(hex).white(70).hex(),
+    (hex: ColorHex) => Color(hex).white(60).hex(),
+    (hex: ColorHex) => Color(hex).white(50).hex(),
+    (hex: ColorHex) => hex,
+    (hex: ColorHex) => Color(hex).black(15).hex(),
+    (hex: ColorHex) => Color(hex).black(30).hex(),
+    (hex: ColorHex) => Color(hex).black(45).hex(),
+    (hex: ColorHex) => Color(hex).black(60).hex(),
+    (hex: ColorHex) => Color(hex).black(75).hex(),
   ].map((fn) => fn(base));
 
 /**
@@ -53,12 +53,12 @@ export const COLORS: Record<string, ColorHex[]> = {
 
 /**
  * Saturate a color by a given ratio
- * @param color ColorHex
+ * @param hex ColorHex
  * @param ratio number
  * @returns ColorHex
  */
-export const saturate = (color: ColorHex, ratio: number): ColorHex => {
-  const instance = Color(color);
+export const saturate = (hex: ColorHex, ratio: number): ColorHex => {
+  const instance = Color(hex);
   const h = instance.hue();
   const s = instance.saturationl() + instance.saturationl() * ratio;
   const l = instance.lightness();
@@ -68,12 +68,12 @@ export const saturate = (color: ColorHex, ratio: number): ColorHex => {
 
 /**
  * Desaturate a color by a given ratio
- * @param color ColorHex
+ * @param hex ColorHex
  * @param ratio number
  * @returns ColorHex
  */
-export const desaturate = (color: ColorHex, ratio: number): ColorHex => {
-  const instance = Color(color);
+export const desaturate = (hex: ColorHex, ratio: number): ColorHex => {
+  const instance = Color(hex);
   const h = instance.hue();
   const s = instance.saturationl() - instance.saturationl() * ratio;
   const l = instance.lightness();

@@ -11,7 +11,7 @@ export type ColorLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 /**
  * Color function type
  */
-export type ColorFunction = (color: ColorHex) => ColorHex;
+export type ColorFunction = (hex: ColorHex) => ColorHex;
 
 /**
  * Color options type

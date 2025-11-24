@@ -16,8 +16,8 @@ const ARGUMENT_PATTERN = /^\d(\w)*$/;
  * Mapping of option keys to color functions
  */
 const COLOR_FUNCTIONS: { [key: string]: ColorFunction } = {
-  d: (color: ColorHex) => desaturate(color, 0.3),
-  s: (color: ColorHex) => saturate(color, 0.3),
+  d: (hex: ColorHex) => desaturate(hex, 0.3),
+  s: (hex: ColorHex) => saturate(hex, 0.3),
 };
 
 /**
