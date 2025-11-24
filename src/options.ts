@@ -3,10 +3,10 @@ import { desaturate, saturate } from "./color";
 import { isInteger } from "./utils";
 import { ColorFunction, ColorLevel, ColorOptions } from "./types";
 
-const ARGUMENT_PATTERN = /^\d(\_\w)*$/;
+const ARGUMENT_PATTERN = /^\d(\w)*$/;
 const COLOR_FUNCTIONS: { [key: string]: ColorFunction } = {
-  d: (instance: ColorInstance) => desaturate(instance, 0.34),
-  s: (instance: ColorInstance) => saturate(instance, 0.34),
+  d: (instance: ColorInstance) => desaturate(instance, 0.3),
+  s: (instance: ColorInstance) => saturate(instance, 0.3),
 };
 
 const level = (options: string[]): ColorLevel => {
