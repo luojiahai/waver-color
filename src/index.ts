@@ -1,48 +1,44 @@
-import { ColorInstance } from "color";
 import { COLORS } from "./color";
 import { options } from "./options";
-import { ColorLevel } from "./types";
+import { ColorHex } from "./types";
 
-const DEFAULT_COLOR_LEVEL = 5;
+/**
+ * Color class
+ */
+class Color {
+  private readonly DEFAULT_COLOR_LEVEL = 5;
+  public colors: ColorHex[];
 
-class WaverColor {
-  private instances: ColorInstance[];
-
-  constructor(instances: ColorInstance[]) {
-    this.instances = instances;
+  constructor(colors: ColorHex[]) {
+    this.colors = colors;
   }
 
-  public color = (level?: ColorLevel): ColorInstance => {
-    return this.instances[(level ?? DEFAULT_COLOR_LEVEL) - 1];
-  };
-
-  public colors = (): ColorInstance[] => {
-    return this.instances;
-  };
-
-  public get = (argument?: string): ColorInstance => {
-    let instance = this.color();
+  public get = (argument?: string): ColorHex => {
+    let color = this.colors[this.DEFAULT_COLOR_LEVEL - 1];
     if (argument) {
       const { level, functions } = options(argument);
-      instance = this.color(level);
+      color = this.colors[level - 1];
       functions.forEach((fn) => {
-        instance = fn(instance);
+        color = fn(color);
       });
     }
-    return instance;
+    return color;
   };
 }
 
-export const gray = new WaverColor(COLORS.gray);
-export const red = new WaverColor(COLORS.red);
-export const orange = new WaverColor(COLORS.orange);
-export const yellow = new WaverColor(COLORS.yellow);
-export const lightyellow = new WaverColor(COLORS.lightyellow);
-export const lightgreen = new WaverColor(COLORS.lightgreen);
-export const green = new WaverColor(COLORS.green);
-export const cyan = new WaverColor(COLORS.cyan);
-export const lightblue = new WaverColor(COLORS.lightblue);
-export const blue = new WaverColor(COLORS.blue);
-export const purple = new WaverColor(COLORS.purple);
-export const magenta = new WaverColor(COLORS.magenta);
-export const pink = new WaverColor(COLORS.pink);
+/**
+ * Predefined color instances
+ */
+export const gray = new Color(COLORS.gray);
+export const red = new Color(COLORS.red);
+export const orange = new Color(COLORS.orange);
+export const yellow = new Color(COLORS.yellow);
+export const lightyellow = new Color(COLORS.lightyellow);
+export const lightgreen = new Color(COLORS.lightgreen);
+export const green = new Color(COLORS.green);
+export const cyan = new Color(COLORS.cyan);
+export const lightblue = new Color(COLORS.lightblue);
+export const blue = new Color(COLORS.blue);
+export const purple = new Color(COLORS.purple);
+export const magenta = new Color(COLORS.magenta);
+export const pink = new Color(COLORS.pink);

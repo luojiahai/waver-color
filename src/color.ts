@@ -1,65 +1,82 @@
-import Color, { ColorInstance } from "color";
+import Color from "color";
 import convert from "color-convert";
+import { ColorHex } from "./types";
 
-const generate = (base: ColorInstance): ColorInstance[] =>
+/**
+ * Generate color levels based on a base color
+ * @param base ColorHex
+ * @returns ColorHex[]
+ */
+const generate = (base: ColorHex): ColorHex[] =>
   [
-    (color: ColorInstance) => color.white(80),
-    (color: ColorInstance) => color.white(70),
-    (color: ColorInstance) => color.white(60),
-    (color: ColorInstance) => color.white(50),
-    (color: ColorInstance) => color,
-    (color: ColorInstance) => color.black(15),
-    (color: ColorInstance) => color.black(30),
-    (color: ColorInstance) => color.black(45),
-    (color: ColorInstance) => color.black(60),
-    (color: ColorInstance) => color.black(75),
+    (color: ColorHex) => Color(color).white(80).hex(),
+    (color: ColorHex) => Color(color).white(70).hex(),
+    (color: ColorHex) => Color(color).white(60).hex(),
+    (color: ColorHex) => Color(color).white(50).hex(),
+    (color: ColorHex) => Color(color).hex(),
+    (color: ColorHex) => Color(color).black(15).hex(),
+    (color: ColorHex) => Color(color).black(30).hex(),
+    (color: ColorHex) => Color(color).black(45).hex(),
+    (color: ColorHex) => Color(color).black(60).hex(),
+    (color: ColorHex) => Color(color).black(75).hex(),
   ].map((fn) => fn(base));
 
-export const COLORS = {
+/**
+ * Predefined color levels
+ */
+export const COLORS: Record<string, ColorHex[]> = {
   gray: [
-    Color("#dae2e6"),
-    Color("#c0c8cc"),
-    Color("#aab0b3"),
-    Color("#939799"),
-    Color("#7d7f80"),
-    Color("#686a6b"),
-    Color("#545657"),
-    Color("#3f4142"),
-    Color("#2b2d2e"),
-    Color("#17191a"),
+    "#dae2e6",
+    "#c0c8cc",
+    "#aab0b3",
+    "#939799",
+    "#7d7f80",
+    "#686a6b",
+    "#545657",
+    "#3f4142",
+    "#2b2d2e",
+    "#17191a",
   ],
-  red: generate(Color("#ff6666")),
-  orange: generate(Color("#ff9966")),
-  yellow: generate(Color("#ffcc66")),
-  lightyellow: generate(Color("#ffff66")),
-  lightgreen: generate(Color("#99ff66")),
-  green: generate(Color("#66ff99")),
-  cyan: generate(Color("#66ffff")),
-  lightblue: generate(Color("#66ccff")),
-  blue: generate(Color("#6699ff")),
-  purple: generate(Color("#9966ff")),
-  magenta: generate(Color("#ff66ff")),
-  pink: generate(Color("#ff6699")),
+  red: generate("#ff6666"),
+  orange: generate("#ff9966"),
+  yellow: generate("#ffcc66"),
+  lightyellow: generate("#ffff66"),
+  lightgreen: generate("#99ff66"),
+  green: generate("#66ff99"),
+  cyan: generate("#66ffff"),
+  lightblue: generate("#66ccff"),
+  blue: generate("#6699ff"),
+  purple: generate("#9966ff"),
+  magenta: generate("#ff66ff"),
+  pink: generate("#ff6699"),
 };
 
-export const saturate = (
-  instance: ColorInstance,
-  ratio: number
-): ColorInstance => {
+/**
+ * Saturate a color by a given ratio
+ * @param color ColorHex
+ * @param ratio number
+ * @returns ColorHex
+ */
+export const saturate = (color: ColorHex, ratio: number): ColorHex => {
+  const instance = Color(color);
   const h = instance.hue();
   const s = instance.saturationl() + instance.saturationl() * ratio;
   const l = instance.lightness();
-  const hsl = convert.hsl.rgb([h, s, l]);
-  return Color.rgb(hsl);
+  const rgb = convert.hsl.rgb([h, s, l]);
+  return Color.rgb(rgb).hex();
 };
 
-export const desaturate = (
-  instance: ColorInstance,
-  ratio: number
-): ColorInstance => {
+/**
+ * Desaturate a color by a given ratio
+ * @param color ColorHex
+ * @param ratio number
+ * @returns ColorHex
+ */
+export const desaturate = (color: ColorHex, ratio: number): ColorHex => {
+  const instance = Color(color);
   const h = instance.hue();
   const s = instance.saturationl() - instance.saturationl() * ratio;
   const l = instance.lightness();
-  const hsl = convert.hsl.rgb([h, s, l]);
-  return Color.rgb(hsl);
+  const rgb = convert.hsl.rgb([h, s, l]);
+  return Color.rgb(rgb).hex();
 };
