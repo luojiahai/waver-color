@@ -2,7 +2,7 @@
   "name": "waver-color",
   "type": "module",
   "version": "0.1.2",
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.23.0",
   "description": "Waver color library",
   "author": "luojiahai <luo@jiahai.co>",
   "license": "MIT",
